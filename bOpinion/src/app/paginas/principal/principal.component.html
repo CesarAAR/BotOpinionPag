@@ -1,0 +1,68 @@
+<h1>Opiniones Ingresadas</h1>
+<hr>
+<div class="row text-right">
+    <div class="col">
+        <button routerLink="/index" routerLinkActive="active" class="btn btn-dark ">Index</button>
+    </div>
+</div>
+<form (ngSubmit)="guardar( f )" #f="ngForm">
+    <div class="row">  
+        <div class="col">
+            <br>ID: 
+            <input type="text" class="form-control" 
+            placeholder="Firebase ID"
+            [(ngModel)]="principal.id"
+            name="id" 
+            disabled="disabled">
+            <small class="form-text text-muted">Este campo es autogenerado</small>
+            
+        </div>
+        
+        <div class="col">
+            <br>Opinion: 
+            <input type="text"
+            [(ngModel)]="principal.opinion"
+            name="opinion" 
+            required 
+            minlength="2" 
+            maxlength="50" 
+            size="40">
+            <br>Tipo:
+            <select class="form-select" 
+            aria-label="Default select example" 
+            [(ngModel)]="principal.tipo"
+            (change)="capturar()"
+            name="tipo" 
+            required >
+                <option *ngFor="let dato of datos">
+                    {{dato}}
+                  </option>
+            </select>
+        </div>
+        <div class="col">
+            <button type="submit" class="btn btn-dark">Insertar</button>
+            <button class="btn btn-dark">Eliminar</button>
+            <button class="btn btn-dark">Actualizar</button>
+            <button class="btn btn-dark">Visualizar</button>
+        </div>
+    </div>
+</form>
+
+<hr>
+
+<table class="table">
+    <thead class="table-dark">
+      <tr>
+          <th scope="col">#</th>
+          <th scope="col">Opinion</th>
+          <th scope="col">Tipo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor = "let opi of princip; let i = index">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ opi.opinion }}</td>
+          <td>{{ opi.tipo }}</td>
+      </tr>
+    </tbody>
+  </table>
