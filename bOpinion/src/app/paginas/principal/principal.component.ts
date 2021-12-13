@@ -58,10 +58,14 @@ export class PrincipalComponent implements OnInit {
   opinion: string;
   tipo: string;
 
-  datos = ['positivo','neutro','negativo'];
+  datos = ['Positivo','Neutro','Negativo'];
 
 capturar() {
   this.tipo=this.tipo;
+}
+
+capturarOpinion(){
+  this.opinion=this.opinion;
 }
 
 }
